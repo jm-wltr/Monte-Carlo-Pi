@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Sep 24 11:17:10 2021
+
+@author: jaimewalter
+"""
 import random
 import math
 import matplotlib.pyplot as plt
@@ -13,10 +20,16 @@ def in_circle(x, origin = [0,0]):
     elif distance(origin, x) <= 1: return True
     else: return False
 
-inside=[]
-R = 10000
-for i in range(R):
-    point = [rand(), rand()]
-    inside.append(in_circle(point))
+x = list(range(1, 1000, 1))
+y = []
 
-print(sum(inside) / R * 4)
+for R in x:
+    inside=[]
+    for i in range(R):
+        point = [rand(), rand()]
+        inside.append(in_circle(point))
+    y.append(sum(inside) / R * 4)
+        
+print(y)
+
+plt.plot(x, y)
