@@ -21,7 +21,7 @@ def in_circle(x, origin = [0,0]):
     elif distance(origin, x) <= 1: return True
     else: return False
 
-x = np.logspace(1, 4, num=1000, dtype=int)
+x = np.logspace(1, 6, num=10000, dtype=int)
 y = []
 
 start_time = time.perf_counter()
@@ -33,10 +33,13 @@ for R in x:
     y.append(sum(inside) / R * 4)
 end_time = time.perf_counter()        
     
-print(y)
+print(y[-1])
 
 dt = end_time-start_time
 print()
 print(dt)
 
-plt.plot(x, y)
+fig = plt.figure()
+ax = fig.add_subplot(111)
+#ax.set_xscale("log")
+ax.plot(x, y)
