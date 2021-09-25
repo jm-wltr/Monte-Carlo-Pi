@@ -27,31 +27,37 @@ def in_circle(x, origin = [0,0]):
     else: return 0
 
 #Calculate pi
-start_time = time.perf_counter()
-inside=0
-R = 100000
-for i in range(R):
-    point = [rand(), rand()]
-    inside += in_circle(point)
-    if i % (R/1000) == 0:
-        sys.stdout.write("\r"+ str(round(i/R*100, 2)) + "%")
-sys.stdout.write("\r")
 
-pi = inside/R*4
-print(pi)
-
-with open("pi.txt", "r") as f:
-    f1 = f.read().splitlines()
-pi_file = float(f1[0])
-R_file = int(f1[1])
-
-R_new = R + R_file
-pi_new = (pi*R + pi_file*R_file)/R_new
-
-with open ("pi.txt", "w") as f:
-    f.write(str(pi_new)+"\n"+str(R_new))
-
-#Show time ellapsed
-end_time = time.perf_counter()    
-dt = end_time-start_time
-print("Calculation time: "+str(dt))   
+while 1 < 2:
+    start_time = time.perf_counter()
+    inside=0
+    R = 10000000
+    for i in range(R):
+        point = [rand(), rand()]
+        inside += in_circle(point)
+        if i % (R/1000) == 0:
+            sys.stdout.write("\r"+ str(round(i/R*100, 2)) + "%")
+    sys.stdout.write("\r")
+    
+    pi = inside/R*4
+    print(pi)
+    
+    with open("pi.txt", "r") as f:
+        f1 = f.read().splitlines()
+    pi_file = float(f1[0])
+    R_file = int(f1[1])
+    
+    R_new = R + R_file
+    pi_new = (pi*R + pi_file*R_file)/R_new
+    
+    with open ("pi.txt", "w") as f:
+        f.write(str(pi_new)+"\n"+str(R_new))
+        
+    print(pi_new)
+    print(np.pi - pi_new)
+    
+    #Show time ellapsed
+    end_time = time.perf_counter()    
+    dt = end_time-start_time
+    print("Calculation time: "+str(dt))   
+ 
